@@ -1,0 +1,2 @@
+module ShrinksHelper
+end
