@@ -1,11 +1,22 @@
 class ShrinksController < ApplicationController
   def create
-    object = Shrink.create!(allowed_params)
-    render json: {
-      status: true,
-      data: object.shortend_url,
-      message: 'Url Shortend..!'
-    }
+    object = Shrink.new(allowed_params)
+    status, link = ShortenUrl.new.call(params[:url])
+    object.shortend_url = link
+
+    if status
+      object.save!
+      render json: {
+        status: true,
+        url: object.shortend_url,
+        message: 'Url Shortend..!'
+      }
+    else
+      render json: {
+        status: false,
+        message: 'Please provide a valid url..!'
+      }
+    end
   end
 
   private

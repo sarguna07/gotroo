@@ -44,6 +44,7 @@ gem 'bootsnap', require: false
 gem 'dotenv-rails'
 gem 'faraday', '~> 1.0.1'
 gem 'faraday_middleware'
+gem 'rack-cors'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -53,7 +54,7 @@ gem 'faraday_middleware'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
